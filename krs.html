@@ -1,13 +1,40 @@
 <!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kartu Rencana Studi (KRS) | SIAKAD</title><link rel="stylesheet" href="css/style.css"></head>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#17365b"><title>Kartu Rencana Studi (KRS) | SIAKAD</title><link rel="stylesheet" href="css/style.css">
+<style>
+/* Gaya tambahan khusus halaman KRS (hanya class baru; tema tetap dari css/style.css) */
+.section-card{margin-bottom:20px;overflow:hidden}
+.card-subtitle{margin:5px 0 0;color:#94a1b1;font-size:11px}
+td.code{font-weight:800;color:#315db2;letter-spacing:.2px}
+td.course{font-weight:700;color:#30445c}
+.class-pill{display:inline-block;padding:5px 9px;border-radius:6px;background:#f1f4f8;color:#5c6f85;font-size:10px;font-weight:750}
+.sks{text-align:center;font-weight:750;color:#344b65}
+.table-footer{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 20px;border-top:1px solid #e8edf3}
+.muted{font-size:10px;color:#9aa7b6}
+button.btn{font:inherit;font-size:11px;font-weight:750;cursor:pointer}
+.btn-primary{background:#315db2;color:#fff;border:0;box-shadow:0 4px 10px #315db226}
+.btn-primary:hover{background:#254d9b}
+.form-content{padding:20px 22px 22px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.field label{display:block;color:#687b91;font-size:10px;font-weight:800;margin-bottom:7px}
+.field select,.field input{width:100%;height:39px;border:1px solid #dfe6ee;border-radius:8px;padding:0 11px;background:#fff;color:#465a71;font:inherit;font-size:11px;outline:none}
+.field select:focus,.field input:focus{border-color:#8aa7e4;box-shadow:0 0 0 3px #315db214}
+.selection-table{min-width:700px}
+.selection-table th:first-child,.selection-table td:first-child{width:48px;text-align:center}
+input[type=checkbox]{width:15px;height:15px;accent-color:#315db2;cursor:pointer}
+.capacity{font-size:10px;color:#8796a8}
+.form-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px}
+.form-actions .right{display:flex;gap:8px}
+@media(max-width:720px){.form-content{padding:16px}.form-grid{grid-template-columns:1fr}.table-footer,.form-actions{align-items:flex-start;flex-direction:column}.form-actions .right{width:100%}.form-actions .btn{flex:1}}
+@media print{.sidebar,.topbar,.form-card,.footer{display:none!important}.section-card{break-inside:avoid}}
+</style></head>
 <body><div class="app">
 <aside class="sidebar">
   <a class="brand" href="dashboard.html"><span class="brand-mark">S</span><span><span class="brand-name">SIAKAD</span><br><span class="brand-sub">Student Portal</span></span></a>
   <div class="nav-label">Menu utama</div>
-  <nav class="nav"><a class="" href="dashboard.html"><span class="nav-icon">▦</span><span>Dashboard</span></a>
+  <nav class="nav" aria-label="Navigasi utama"><a class="" href="dashboard.html"><span class="nav-icon">▦</span><span>Dashboard</span></a>
 <a class="" href="profil.html"><span class="nav-icon">♙</span><span>Profil Mahasiswa</span></a>
 <a class="" href="jadwal.html"><span class="nav-icon">▤</span><span>Jadwal Kuliah</span></a>
-<a class="active" href="krs.html"><span class="nav-icon">▣</span><span>Kartu Rencana Studi</span></a>
+<a class="active" href="krs.html" aria-current="page"><span class="nav-icon">▣</span><span>Kartu Rencana Studi</span></a>
 <a class="" href="khs.html"><span class="nav-icon">▧</span><span>Kartu Hasil Studi</span></a>
 <a class="" href="pengumuman.html"><span class="nav-icon">◉</span><span>Pengumuman</span></a></nav>
   <div class="sidebar-bottom">Sistem Informasi Akademik<br>Versi 1.0</div>
@@ -16,21 +43,33 @@
   <div class="breadcrumb">SIAKAD <span style="padding:0 8px;color:#b3bdca">/</span> <strong>Kartu Rencana Studi (KRS)</strong></div>
   <div class="top-actions"><span class="top-icon">♧</span><div class="user"><div class="avatar">JM</div><div><div class="user-name">Jamaludin</div><div class="user-role">Mahasiswa</div></div></div><a href="login.html" class="btn-out"> Logout</a></div>
 </header><section class="content">
-<div class="page-heading"><div><div class="eyebrow">Perencanaan studi</div><h1>Kartu Rencana Studi</h1><p class="page-desc">Daftar mata kuliah yang direncanakan pada semester berjalan.</p></div><span class="badge blue">Ganjil 2026/2027</span></div>
+<div class="page-heading"><div><div class="eyebrow">Perencanaan studi</div><h1>Kartu Rencana Studi</h1><p class="page-desc">Daftar mata kuliah yang direncanakan pada semester berjalan.</p></div><span class="badge blue">● Semester Ganjil 2026/2027</span></div>
 <div class="grid stats">
-<div class="card stat"><div><div class="stat-label">Total Mata Kuliah</div><div class="stat-value">8</div><div class="stat-note">Mata kuliah terdaftar</div></div><div class="stat-icon">▤</div></div>
-<div class="card stat"><div><div class="stat-label">Total SKS</div><div class="stat-value">21</div><div class="stat-note">Rencana studi</div></div><div class="stat-icon">▣</div></div>
-<div class="card stat"><div><div class="stat-label">Semester</div><div class="stat-value">5</div><div class="stat-note">Semester berjalan</div></div><div class="stat-icon">◷</div></div>
-<div class="card stat"><div><div class="stat-label">Status KRS</div><div class="stat-value" style="font-size:20px">Disetujui</div><div class="stat-note">Contoh status</div></div><div class="stat-icon">✓</div></div>
+<article class="card stat"><div><div class="stat-label">Total Mata Kuliah</div><div class="stat-value">8</div><div class="stat-note">Mata kuliah terdaftar</div></div><div class="stat-icon">▤</div></article>
+<article class="card stat"><div><div class="stat-label">Total SKS</div><div class="stat-value">21</div><div class="stat-note">Rencana studi</div></div><div class="stat-icon">▣</div></article>
+<article class="card stat"><div><div class="stat-label">Semester</div><div class="stat-value">5</div><div class="stat-note">Semester berjalan</div></div><div class="stat-icon">◷</div></article>
+<article class="card stat"><div><div class="stat-label">Status KRS</div><div class="stat-value" style="font-size:20px">Disetujui</div><div class="stat-note">Contoh status</div></div><div class="stat-icon">✓</div></article>
 </div>
-<div class="card"><div class="card-head"><h2 class="card-title">Daftar Rencana Studi</h2><span class="badge green">Data contoh</span></div><div class="table-wrap"><table><thead><tr><th>No.</th><th>Kode</th><th>Mata Kuliah</th><th>SKS</th><th>Kelas</th><th>Dosen Pengampu</th></tr></thead><tbody>
-<tr><td>1</td><td>IF301</td><td>Analisis dan Perancangan Sistem</td><td>3</td><td> TI-5A</td><td>Andi Setiawan</td></tr>
-<tr><td>2</td><td>IF302</td><td>Pemrograman Web</td><td>3</td><td>TI-5A</td><td>Rina Kurnia</td></tr>
-<tr><td>3</td><td>IF303</td><td>Basis Data</td><td>3</td><td>TI-5A</td><td>Dedi Firmansyah</td></tr>
-<tr><td>4</td><td>IF304</td><td>Jaringan Komputer</td><td>3</td><td>TI-5B</td><td>Agus Pratama</td></tr>
-<tr><td>5</td><td>IF305</td><td>Rekayasa Perangkat Lunak</td><td>3</td><td>TI-5A</td><td>Siti Rahma</td></tr>
-<tr><td>6</td><td>IF306</td><td>Interaksi Manusia dan Komputer</td><td>3</td><td>TI-5B</td><td>Fajar Nugroho</td></tr>
-<tr><td>7</td><td>IF307</td><td>Etika Profesi</td><td>2</td><td>TI-5A</td><td>Maya Lestari</td></tr>
-<tr><td>8</td><td>IF308</td><td>Metodologi Penelitian</td><td>1</td><td>TI-5A</td><td>Nur Hidayah</td></tr>
-</tbody><tfoot><tr><td colspan="3" style="text-align:right"><strong>Total SKS</strong></td><td><strong>21</strong></td><td colspan="2"></td></tr></tfoot></table></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><a class="btn btn-outline" href="#" onclick="return false">▧ Cetak KRS (simulasi)</a></div></div>
+<section class="card section-card"><div class="card-head"><div><h2 class="card-title">Daftar Rencana Studi</h2><p class="card-subtitle">Mata kuliah yang telah tercatat pada KRS semester ini.</p></div><span class="badge green">✓ Data contoh</span></div><div class="table-wrap"><table><thead><tr><th>No.</th><th>Kode Mata Kuliah</th><th>Nama Mata Kuliah</th><th>SKS</th><th>Kelas</th><th>Dosen Pengampu</th></tr></thead><tbody>
+<tr><td>01</td><td class="code">IF301</td><td class="course">Analisis dan Perancangan Sistem</td><td class="sks">3</td><td><span class="class-pill">TI-5A</span></td><td>Andi Setiawan</td></tr>
+<tr><td>02</td><td class="code">IF302</td><td class="course">Pemrograman Web</td><td class="sks">3</td><td><span class="class-pill">TI-5A</span></td><td>Rina Kurnia</td></tr>
+<tr><td>03</td><td class="code">IF303</td><td class="course">Basis Data</td><td class="sks">3</td><td><span class="class-pill">TI-5A</span></td><td>Dedi Firmansyah</td></tr>
+<tr><td>04</td><td class="code">IF304</td><td class="course">Jaringan Komputer</td><td class="sks">3</td><td><span class="class-pill">TI-5B</span></td><td>Agus Pratama</td></tr>
+<tr><td>05</td><td class="code">IF305</td><td class="course">Rekayasa Perangkat Lunak</td><td class="sks">3</td><td><span class="class-pill">TI-5A</span></td><td>Siti Rahma</td></tr>
+<tr><td>06</td><td class="code">IF306</td><td class="course">Interaksi Manusia dan Komputer</td><td class="sks">3</td><td><span class="class-pill">TI-5B</span></td><td>Fajar Nugroho</td></tr>
+<tr><td>07</td><td class="code">IF307</td><td class="course">Etika Profesi</td><td class="sks">2</td><td><span class="class-pill">TI-5A</span></td><td>Maya Lestari</td></tr>
+<tr><td>08</td><td class="code">IF308</td><td class="course">Metodologi Penelitian</td><td class="sks">1</td><td><span class="class-pill">TI-5A</span></td><td>Nur Hidayah</td></tr>
+</tbody><tfoot><tr><td colspan="3" style="text-align:right"><strong>Total SKS</strong></td><td class="sks"><strong>21</strong></td><td colspan="2"></td></tr></tfoot></table></div>
+<div class="table-footer"><span class="muted">Menampilkan 8 dari 8 mata kuliah · Tahun akademik 2026/2027</span><button class="btn btn-outline" type="button">▧ Cetak KRS (simulasi)</button></div></section>
+<section class="card section-card form-card"><div class="card-head"><div><h2 class="card-title">Formulir Pemilihan Mata Kuliah</h2><p class="card-subtitle">Contoh antarmuka pengisian KRS untuk mahasiswa.</p></div><span class="badge amber">Simulasi statis</span></div>
+<form class="form-content">
+<div class="notice"><strong>Informasi:</strong> Bagian ini merupakan contoh tampilan formulir. Pilihan mata kuliah belum terhubung ke database dan tidak akan mengubah KRS yang tercantum di atas.</div>
+<div class="form-grid"><div class="field"><label for="semester">Semester Akademik</label><select id="semester"><option>Ganjil 2026/2027</option><option>Genap 2026/2027</option></select></div><div class="field"><label for="program">Program Studi</label><input id="program" value="Teknik Informatika" readonly></div></div>
+<div class="table-wrap"><table class="selection-table"><thead><tr><th>Pilih</th><th>Kode</th><th>Nama Mata Kuliah</th><th>SKS</th><th>Kelas</th><th>Ketersediaan</th></tr></thead><tbody>
+<tr><td><input type="checkbox" aria-label="Pilih IF309"></td><td class="code">IF309</td><td class="course">Keamanan Sistem Informasi</td><td class="sks">3</td><td><span class="class-pill">TI-5A</span></td><td><span class="badge green">Tersedia</span></td></tr>
+<tr><td><input type="checkbox" aria-label="Pilih IF310"></td><td class="code">IF310</td><td class="course">Pemrograman Mobile</td><td class="sks">3</td><td><span class="class-pill">TI-5B</span></td><td><span class="badge green">Tersedia</span></td></tr>
+<tr><td><input type="checkbox" aria-label="Pilih IF311"></td><td class="code">IF311</td><td class="course">Data Mining</td><td class="sks">2</td><td><span class="class-pill">TI-5A</span></td><td><span class="badge amber">Kuota terbatas</span></td></tr>
+</tbody></table></div>
+<div class="form-actions"><span class="capacity">* Data mata kuliah dan kuota merupakan ilustrasi.</span><div class="right"><button class="btn btn-outline" type="reset">↺ Reset pilihan</button><button class="btn btn-primary" type="button">＋ Ajukan Mata Kuliah</button></div></div>
+</form></section>
 <div class="footer">© 2026 SIAKAD | UNINDRA - Kelompok 4</div></section></main></div></body></html>
